@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Услуга {{ data.orders.id }}
+{% endblock %}
+
+{% block navigation %}
+    <button class="button-style" onclick="location.href='/'" > Назад </button>
+{% endblock %}
+
+
+{% block content %}
+{% load static %}
+<div style="display: flex; height: 300px;">
+    <div class="order-text server-conf">
+        <div></div>
+        <div><h3>{{ data.orders.title }}</h3></div>
+        <img class="order-img" src="{% static data.orders.src %}" alt="My image">
+        <div>Стоимость: {{ data.orders.cost }} ₽</div>
+    </div>
+
+</div>
+<style>
+
+</style>
+
+{% endblock %}

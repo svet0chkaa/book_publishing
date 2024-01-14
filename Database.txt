@@ -1,0 +1,45 @@
+# Файл  с созданием и заполнением БД, если слетить вируталка
+Создание таблиц:
+CREATE TABLE users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE moderators (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE request (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    status VARCHAR(10) NOT NULL,
+    date_create DATE NOT NULL,
+    date_formation DATE NOT NULL,
+    date_complete DATE NOT NULL,
+    user_id INTEGER NOT NULL,
+    moderator_id INTEGER NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users (id),
+    FOREIGN KEY (moderator_id) REFERENCES moderators (id)
+);
+
+CREATE TABLE orders (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title VARCHAR(50) NOT NULL,
+    status VARCHAR(50) NOT NULL,
+    processor VARCHAR(100) NOT NULL,
+    ghz FLOAT NOT NULL,
+    ram INTEGER NOT NULL,
+    rate VARCHAR(100) NOT NULL,
+    availableos VARCHAR(50) NOT NULL,
+    cost INTEGER NOT NULL
+);
+
+Заполнение orders:
+INSERT INTO orders (id, title, status, processor, ghz, ram, cost, rate, availableos)
+VALUES (1, 'EL11-SSD-10GE', 'valid', 'Intel Xeon E-2236', 3.5, 32, 11900, '0', 'Windows'),
+       (2, 'EL42-NVMe', 'valid', 'Intel Xeon E-2386G', 3.4, 32, 15600, '0', 'Windows'),
+       (3, 'EL13-SSD', 'valid', 'Intel Xeon E-2236', 3.4, 32, 16800, '0', 'Windows Ubuntu'),
+       (4, 'BL22-NVMe', 'valid', 'Intel Xeon W-2255', 3.7, 128, 34500, '0', 'Ubuntu'),
+       (5, 'BL21R-NVMe', 'valid', 'Intel Xeon W-2255', 3.7, 256, 49800, '0', 'Windows'),
+       (6, 'PL25-NVMe', 'valid', 'Intel Xeon Gold 6354', 3, 256, 7900, '0', 'Windows Ubuntu'),
+       (7, 'PL25-NVMe_1', 'valid', 'Intel Xeon Gold 6354', 3, 254, 4900, '0', 'Ubuntu');

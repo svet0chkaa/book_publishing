@@ -1,0 +1,11 @@
+{% load static %}
+<div class="order-div">
+    
+    <div style="margin-left: 10px; text-align: center; font-weight: 1000;"> {{ element.title }} </div>
+    <img class="order-img" src="{% static element.src %}" alt="My image">
+    
+    <div style = "display: flex;">
+        <button class="button-style" onclick="location.href='{% url 'order_url' element.id %}'" >Подробнее</button>
+        <button class="button-style" style="background-color: red;" onclick="location.href='{% url 'delete_order' element.id %}'" >Удалить</button>
+    </div>
+</div>

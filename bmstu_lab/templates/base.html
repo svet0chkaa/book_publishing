@@ -1,0 +1,23 @@
+<!doctype html>
+{% load static %}
+<html lang="en" class="h-100">
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/order.css' %}">
+  <link rel="stylesheet" href="{% static 'css/navigation.css' %}">
+  <link rel="stylesheet" href="{% static 'css/bg-orders.css' %}"> 
+  <link rel="stylesheet" href="{% static 'css/order-info.css' %}">
+    
+</head>
+<body>
+  
+  
+
+  {% block navigation %} {% endblock %}
+  {% block content %} {% endblock %}
+  {% comment %} <div style="background-color: blue; height: 100%; width: 100%">
+    инфу брала с сайта: https://selectel.ru/services/dedicated/
+  </div> {% endcomment %}
+</body>
+</html>

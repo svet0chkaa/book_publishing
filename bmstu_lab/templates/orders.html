@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Книжное издательство{% endblock %}
+
+{% block navigation %}
+    {% include 'nav_panel.html' %}
+{% endblock %}
+
+{% block content %}
+<div style="display: flex; background-color: #f2f2f2;   ">
+    <div style="background-color: #f2f2f2;">
+        <div class="div-orders">
+            {% for order in data.orders %}
+                {% include 'order_element.html' with element=order %}
+                {% empty %}
+                <div class="order-div">
+                    <div style="margin: 150px 10px; text-align: center; font-weight: 1000;">
+                        Такой услуги нет
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
