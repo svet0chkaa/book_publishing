@@ -9,30 +9,30 @@ def hello(request):
         'current_date': date.today()
     })
 
-def GetOrders(request):
-    pattern = request.GET.get('ord')
+def GetWorks(request):
+    pattern = request.GET.get('wrk')
     data = GetData(0)
     
     if pattern:
         data['collection']['input_value'] = pattern
         result_of_search = []
-        for i in data['collection']['orders']:
+        for i in data['collection']['workrs']:
             if re.search(pattern, i['title']):
                 result_of_search.append(i)
 
-        data['collection']['orders'] = result_of_search
+        data['collection']['works'] = result_of_search
 
-    return render(request, 'orders.html', data)
+    return render(request, 'works.html', data)
 
-def GetOrder(request, id):
+def GetWork(request, id):
     data = GetData(id)
-    return render(request, 'order.html', {'data': data
+    return render(request, 'work.html', {'data': data
     })
 
 def GetData(id):
     data = {'collection' : {
         'current_date': date.today(),
-        'orders': [
+        'works': [
             {'title': 'Печать', 'id': 1, 'price': "От 10 руб. за 1 страницу", "img": "img/1.jpg", "description" : "Для уточнения деталей услуги свяжитесь с нами."},
             {'title': 'Брошюрирование', 'id': 2, 'price': "От 500 руб.", "img": "img/2.jpg", "description": "Для уточнения деталей услуги свяжитесь с нами."},
             {'title': 'Дизайн обложки', 'id': 3, 'price': "От 1500 руб.", "img": "img/3.jpg", "description": "Создадим уникальный дизайн обложки для Вас! Для уточнения деталей услуги свяжитесь с нами."},
@@ -43,7 +43,7 @@ def GetData(id):
     if id == 0:
         return data
     else:
-        for i in data['collection']['orders']:
+        for i in data['collection']['workrs']:
             if i['id'] == id:
                 return i
     return -1

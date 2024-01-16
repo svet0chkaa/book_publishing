@@ -19,7 +19,7 @@ from django.urls import path
 from books import views
 
 urlpatterns = [
-    path('', views.GetOrders),
-    path('order/<int:id>/', views.GetOrder, name='order_url'),
-    path('', views.GetOrders, name='sendText'),
+    path('', views.GetWorks),
+    path('work/<int:id>/', views.GetWork, name='work_url'),
+    path('', views.GetWork, name='sendText'),
 ]
